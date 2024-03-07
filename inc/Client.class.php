@@ -2,10 +2,14 @@
     require_once('Database.class.php');
 
     class Client{
-        public static function create_client($email, $name, $city, $telephone){
+        public static function create_client($email, $name, $city, $telephone)
+        {   //Función para creación de cliente
+
+            //Se reciben los parametros y se crea la conexión a la BD
             $database = new Database();
             $conn = $database->getConnection();
 
+            //Se preparan los datos recibidos con validación de seguridad...
             $stmt = $conn->prepare('INSERT INTO listado_clientes(email, name, city, telephone)
                 VALUES(:email, :name, :city, :telephone)');
             $stmt->bindParam(':email',$email);
@@ -13,7 +17,7 @@
             $stmt->bindParam(':city',$city);
             $stmt->bindParam(':telephone',$telephone);
 
-            if($stmt->execute()){
+            if($stmt->execute()){ //Se entregan Headers para responder a los resultados del API
                 header('HTTP/1.1 201 Cliente creado correctamente');
             } else {
                 header('HTTP/1.1 404 Cliente no se ha creado correctamente');
