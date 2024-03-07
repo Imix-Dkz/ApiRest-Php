@@ -18,7 +18,7 @@ Siguiendo el ejemplo del restaurante, notamos lo siguiente:
 6. **Representation:** Hace referencia a la representación de datos, usualmente en un formato que el cliente pueda manejar, como XML o JSON
 
 El origen de este ejercicio parte del vídeo _"Como crear una API Rest en PHP paso a paso"_, del canal: **Garaje de Ideas**
-* https://www.youtube.com/watch?v=QJfRtxxJ1TA
+* [Enlace al vídeo](https://www.youtube.com/watch?v=QJfRtxxJ1TA)
 * En este ejemplo se usa RapidAPI para realizar pruebas, pero debido a que tiene un periodo de prueba se usará POSTman
 
 
