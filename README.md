@@ -26,8 +26,6 @@ El origen de este ejercicio parte del vídeo _"Como crear una API Rest en PHP pa
  * La principal diferencia con el curso del video, es que la forma de llamar las variables de conexión, aw hace por segurida con un archivo arreglo que está oculto, pero solo hay que mandar a hacer un archivo "env.php" dentro de include con la siguiente estructura...
 > $dbConf['DB_CONN'] = "mysql";
 > $dbConf['DB_HOSTp'] = "LOCALHOST:XXXX"; //ip:puerto
-> - //$DB_HOST = "127.0.0.1";
-> - //$DB_PORT = "8080";
 > $dbConf['DB_DATABASE'] = "DB_name";
 > $dbConf['DB_USERNAME'] = "Usr_Name";
 > $dbConf['DB_PASSWORD'] = "Psw";
