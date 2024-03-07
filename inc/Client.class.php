@@ -17,35 +17,42 @@
             $stmt->bindParam(':city',$city);
             $stmt->bindParam(':telephone',$telephone);
 
-            if($stmt->execute()){ //Se entregan Headers para responder a los resultados del API
-                header('HTTP/1.1 201 Cliente creado correctamente');
-            } else {
-                header('HTTP/1.1 404 Cliente no se ha creado correctamente');
-            }
+            //Se entregan Headers para responder a los resultados de la execución de la API
+            if($stmt->execute())
+                { header('HTTP/1.1 201 Cliente creado correctamente'); }
+            else{ header('HTTP/1.1 404 Cliente no se ha creado correctamente'); }
         }
 
-        public static function delete_client_by_id($id){
+        public static function delete_client_by_id($id)
+        {   //Función para Baja de cliente
+
+            //Se recibe ID y se crea conexión
             $database = new Database();
             $conn = $database->getConnection();
 
+            //Se perpara la sentencia de borrado usando el ID
             $stmt = $conn->prepare('DELETE FROM listado_clientes WHERE id=:id');
             $stmt->bindParam(':id',$id);
-            if($stmt->execute()){
-                header('HTTP/1.1 201 Cliente borrad correctamente');
-            } else {
-                header('HTTP/1.1 404 Cliente no se ha podido borrar correctamente');
-            }
+            //Se ejecuta comando
+            if($stmt->execute())
+                { header('HTTP/1.1 201 Cliente borrado correctamente'); }
+            else{ header('HTTP/1.1 404 Cliente no se ha podido borrar correctamente'); }
         }
 
-        public static function get_all_clients(){
+        public static function get_all_clients()
+        {   //Regresa listado de clientes en arreglo
+
+            //Se crea conexión
             $database = new Database();
             $conn = $database->getConnection();
+
+            //Ahora la consulta es de listado de clientes
             $stmt = $conn->prepare('SELECT * FROM listado_clientes');
             if($stmt->execute()){
-                $result = $stmt->fetchAll();
-                echo json_encode($result);
+                $result = $stmt->fetchAll(); //Con fechAll para pasar todos los datos a un array
+                echo json_encode($result); //Y así se pasan a un formato json los datos
                 header('HTTP/1.1 201 OK');
-            } else {
+            }else{ //En caso de error, arrojará el siguiente aviso
                 header('HTTP/1.1 404 No se ha podido consultar los clientes');
             }
         }
