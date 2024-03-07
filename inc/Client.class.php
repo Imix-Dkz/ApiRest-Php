@@ -57,22 +57,25 @@
             }
         }
 
-        public static function update_client($id, $email, $name, $city, $telephone){
+        public static function update_client($id, $email, $name, $city, $telephone)
+        {   //Función de actualización de DATOS
+
+            //Se crea conexión a BD
             $database = new Database();
             $conn = $database->getConnection();
 
+            
             $stmt = $conn->prepare('UPDATE listado_clientes SET email=:email, name=:name, city=:city, telephone=:telephone WHERE id=:id');
             $stmt->bindParam(':email',$email);
             $stmt->bindParam(':name',$name);
             $stmt->bindParam(':city',$city);
             $stmt->bindParam(':telephone',$telephone);
+            //Es similar al de creación, pero se usa ID para validar el dato a actualizar
             $stmt->bindParam(':id',$id);
 
-            if($stmt->execute()){
-                header('HTTP/1.1 201 Cliente actualizado correctamente');
-            } else {
-                header('HTTP/1.1 404 Cliente no se ha podido actualizar correctamente');
-            }
+            if($stmt->execute())
+                { header('HTTP/1.1 201 Cliente actualizado correctamente'); }
+            else{ header('HTTP/1.1 404 Cliente no se ha podido actualizar correctamente'); }
 
         }
     }
