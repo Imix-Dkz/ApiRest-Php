@@ -47,7 +47,7 @@
     </pre-->
     <h2>La próxima película de Marvel es...</h2>
     <section>
-        <img src="<?= $data['poster_url']; ?>" width="65%" alt="<?= $data['title']; ?>"
+        <img src="<?= $data['poster_url']; ?>" width="45%" alt="<?= $data['title']; ?>"
             style="border-radius:16px">
     </section>
     <hgroup>
