@@ -7,8 +7,11 @@
     //Habilitación de tipos ESTRICTOS
     declare(strict_types=1); //<- Se tiene  que mantener a nivel de archivo, NO GLOBAL
 
-    //Se inicialia API_URL con su curl-handler
-    const API_URL = "https://www.whenisthenextmcufilm.com/api";
+    function render_template(string $template, array $data=[])
+    { //Aqui se realizará una validación de las plantillas a renderizar
+        extract($data);
+        require_once "templates/$template.php";
+    }
 
     function get_data(string $url):array
     { //Modo SIMPLIFICADO, solo para cuando es GET de datos
@@ -24,7 +27,7 @@
             $days == 1   => "Mañana se estrena 😜",
             $days < 7    => "Se estrena está semana 😦",
             $days < 30   => "Estamos en el mes de estreno 📅",
-            default     => "$days hasta el estreno",
+            default     => "$days días hasta el estreno",
         };
     }
 ?>

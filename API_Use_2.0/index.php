@@ -1,14 +1,17 @@
 <?php
-    require_once('functions.php'); //<- Funciones estrictas AQUI
+    require_once 'consts.php';
+    require_once 'functions.php'; //<- Funciones estrictas AQUI
+    require_once 'classes/NextMovie.php';
 
-    $data = get_data(API_URL);
-    $untilMessage = get_until_message($data['days_until']);
-
-?>
-<!DOCTYPE html>
-<html lang="en">
-<?php 
-    require_once 'sections/head.php'; //<- Aqui tambien se usan los estilos 
-    require_once 'sections/main.php';
+    $next_movie = NextMovie::fetch_and_create_movie(API_URL);
+    $next_movie_data = $next_movie->get_data();
+    
+    //Sección de plantillas
+    render_template('head', ['title'=>$next_movie_data['title']]); //<= Aqui como sólo se ocupa el title
+    //Antes de mandar el $next_movie_data, hay que mandar tambien el $untilMessage
+    render_template('main', array_merge( $next_movie_data,
+        ['until_message' => $next_movie->get_until_message()]
+    ));
+    render_template('styles');
 ?>
 </html>
