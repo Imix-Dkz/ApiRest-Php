@@ -1,4 +1,8 @@
 <body>
+    <div id="loader" align="center">
+        <img src="server_loading.gif" width="45%" alt="">
+    </div>
+
     <!--pre style="font-size: 8px; overflow: scroll; height:250px;">
         <?php //= var_dump($data);?>
     </pre-->

@@ -1,15 +1,3 @@
-<?php
-    //Se inicialia API_URL con su curl-handler
-    const API_URL = "https://www.whenisthenextmcufilm.com/api";
-    $ch = curl_init(API_URL);
-    //Se indica que se recibe el resultado de la petición y no se muestra en pantalla
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    //Se ejecuta la petición y garda resultado...
-    $result = curl_exec($ch);
-    $data = json_decode($result, true);
-    curl_close($ch);
-    //var_dump($data);    
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,8 +28,33 @@
             text-align: center;
         }
     </style>
+    <?php
+        //Se inicialia API_URL con su curl-handler
+        const API_URL = "https://www.whenisthenextmcufilm.com/api";
+        $ch = curl_init(API_URL);
+        //Se indica que se recibe el resultado de la petición y no se muestra en pantalla
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        //Se ejecuta la petición y garda resultado...
+        $result = curl_exec($ch);
+        $data = json_decode($result, true);
+        curl_close($ch);
+        //var_dump($data);    
+    ?>
+
+    <script>
+        //Se añade loading de la pagina mientras se cargan los datos del API
+        document.addEventListener('DOMContentLoaded', () => {
+            const loader = document.getElementById('loader');
+            loader.style.display = 'none';
+        })
+    </script>
+
 </head>
 <body>
+    <div id="loader">
+        <img src="blue_loading.gif" width="45%" alt="">
+    </div>
+
     <!--pre style="font-size: 8px; overflow: scroll; height:250px;">
         <?php //= var_dump($data);?>
     </pre-->
@@ -55,6 +68,5 @@
         <p>Fecha de estreno <b><?= $data['release_date']; ?></b></p>
         <p>La siguiente es: <?= $data['following_production']['title'] ;?> </p>
     </hgroup>
-        
 </body>
 </html>
