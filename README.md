@@ -26,12 +26,33 @@ El origen de este ejercicio parte del vídeo _"Como crear una API Rest en PHP pa
 ## [Nota 2]
  * La principal diferencia con el curso del video, es que la forma de llamar las variables de conexión, aw hace por segurida con un archivo arreglo que está oculto, pero solo hay que mandar a hacer un archivo "env.php" dentro de include con la siguiente estructura...
     ````
-    $dbConf['DB_CONN'] = "mysql";
-    $dbConf['DB_HOSTp'] = "LOCALHOST:XXXX"; //ip:puerto
-    $dbConf['DB_DATABASE'] = "DB_name";
-    $dbConf['DB_USERNAME'] = "Usr_Name";
-    $dbConf['DB_PASSWORD'] = "Psw";
+      $dbConf['DB_CONN'] = "mysql";
+      $dbConf['DB_HOSTp'] = "LOCALHOST:XXXX"; //ip:puerto
+      $dbConf['DB_DATABASE'] = "DB_name";
+      $dbConf['DB_USERNAME'] = "Usr_Name";
+      $dbConf['DB_PASSWORD'] = "Psw";
     ````
+
 ### PHP Unit 
-Basado en el ejercico del video [**Unit Testing with PHP Unit
-**](https://www.youtube.com/watch?v=a5ZKCFINUkU), del canal "https://www.youtube.com/@srenspangsbergjrgensen2419"
+Basado en el ejercico del video [Unit Testing with PHP Unit
+](https://www.youtube.com/watch?v=a5ZKCFINUkU), del canal [srenspangsbergjrgensen2419](https://www.youtube.com/@srenspangsbergjrgensen2419).
+La forma correcta de instalar la libreria de pruebas es la siguiente:
+````
+    $ composer require phpunit/phpunit ^9 --dev
+````
+Durante el armado de pruebas, es importante, configurar correctamente el archivo "composer.json" agregando el siguiente extracto
+````
+    {
+        ...
+    },
+    /* //Apartir de aqui */
+    "autoload": {
+        "psr-4": {
+            "App\\": "app"
+        }
+    }
+````
+Despues, hay que ejecutar( para asegurarser que están bien los datos):
+````
+composer update
+````
