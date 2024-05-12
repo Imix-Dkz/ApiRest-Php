@@ -16,20 +16,22 @@ Siguiendo el ejemplo del restaurante, notamos lo siguiente:
 4. **CRUD Operations:** Una RESTful-API, normalmente soporta las 4 operaciones principales que son Crear, Leer, Actualizar y Eliminar(**C**reate, **R**ead, **U**pdate **D**elete). Esto, siguiendo el ejemplo del restaurante seria algo como, agregar nuevos platillos, revisar los existentes, actualizar precios y remover platillos
 5. **Uniform Interface:** Las RESTful-API suelen contar con una Interface Uniforme estandarizada normalmente con el protocolo _HTTP_ y sus metodos GET, POST, PUT, DELETE, para realiuzar las acciones
 6. **Representation:** Hace referencia a la representación de datos, usualmente en un formato que el cliente pueda manejar, como XML o JSON
+### [NOTA 1] : Se añade un ejemplo de control de pruebas de PHP_Unit
+7. [**PHP Unit:**](#php-unit) En su directorio personal, se añade control de pruebas de un ejercicio
 
 El origen de este ejercicio parte del vídeo _"Como crear una API Rest en PHP paso a paso"_, del canal: **Garaje de Ideas**
-* [Enlace al vídeo watch?v=QJfRtxxJ1TA](https://www.youtube.com/watch?v=QJfRtxxJ1TA)
+* Enlace al [**vídeo** watch?v=QJfRtxxJ1TA](https://www.youtube.com/watch?v=QJfRtxxJ1TA)
 * En este ejemplo se usa RapidAPI para realizar pruebas, pero debido a que tiene un periodo de prueba se usará POSTman
 
-
-## [Nota]
+## [Nota 2]
  * La principal diferencia con el curso del video, es que la forma de llamar las variables de conexión, aw hace por segurida con un archivo arreglo que está oculto, pero solo hay que mandar a hacer un archivo "env.php" dentro de include con la siguiente estructura...
-> $dbConf['DB_CONN'] = "mysql";
->
-> $dbConf['DB_HOSTp'] = "LOCALHOST:XXXX"; //ip:puerto
->
-> $dbConf['DB_DATABASE'] = "DB_name";
->
-> $dbConf['DB_USERNAME'] = "Usr_Name";
->
-> $dbConf['DB_PASSWORD'] = "Psw";
+    ````
+    $dbConf['DB_CONN'] = "mysql";
+    $dbConf['DB_HOSTp'] = "LOCALHOST:XXXX"; //ip:puerto
+    $dbConf['DB_DATABASE'] = "DB_name";
+    $dbConf['DB_USERNAME'] = "Usr_Name";
+    $dbConf['DB_PASSWORD'] = "Psw";
+    ````
+### PHP Unit 
+Basado en el ejercico del video [**Unit Testing with PHP Unit
+**](https://www.youtube.com/watch?v=a5ZKCFINUkU), del canal "https://www.youtube.com/@srenspangsbergjrgensen2419"
